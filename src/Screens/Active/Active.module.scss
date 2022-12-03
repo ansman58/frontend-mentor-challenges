@@ -1,0 +1,53 @@
+.wrapper {
+  display: grid;
+
+  @media (max-width: 768px) {
+    display: unset;
+    width: 100%;
+    max-width: 100%;
+    background-color: red;
+  }
+}
+
+.content {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.text {
+  margin-bottom: 40px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.empty {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: hsl(229, 25%, 31%);
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.right,
+.left {
+  display: grid;
+}
+
+.empty {
+  margin-inline: auto;
+}

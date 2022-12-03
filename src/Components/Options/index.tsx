@@ -10,6 +10,7 @@ interface IOptions {
   isRock?: boolean;
   isSpock?: boolean;
   isLizard?: boolean;
+  isActive?: boolean;
 }
 
 const Options: React.FC<IOptions> = ({
@@ -20,6 +21,7 @@ const Options: React.FC<IOptions> = ({
   isRock,
   isSpock,
   isLizard,
+  isActive,
 }) => {
   return (
     <div className={style.wrapper}>
@@ -32,6 +34,7 @@ const Options: React.FC<IOptions> = ({
             [style.scissors]: isScissors,
             [style.spock]: isSpock,
             [style.lizard]: isLizard,
+            [style.active]: isActive,
           },
           className
         )}
