@@ -1,8 +1,17 @@
+import clsx from "clsx";
 import style from "./Scoreboard.module.scss";
 
-const Scoreboard = () => {
+interface ScoreboardProps {
+  isActiveBoard?: boolean;
+}
+
+const Scoreboard: React.FC<ScoreboardProps> = ({ isActiveBoard }) => {
   return (
-    <div className={style.wrapper}>
+    <div
+      className={clsx(style.wrapper, {
+        [style["active-board"]]: isActiveBoard,
+      })}
+    >
       <div className={style["options-container"]}>
         <div className={style["options-content"]}>
           <p>Rock</p>

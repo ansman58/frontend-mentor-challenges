@@ -8,7 +8,7 @@ function App() {
   const [isActive, setIsActive] = React.useState(true);
   return (
     <div className={style.app}>
-      <Scoreboard />
+      <Scoreboard isActiveBoard={isActive ? true : false} />
       <section className={style.margin}>
         {isActive ? <Active /> : <Ready />}
       </section>

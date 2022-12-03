@@ -13,6 +13,21 @@
   }
 }
 
+.active-board {
+  @media (max-width: 1300px) {
+    width: 70%;
+  }
+
+  @media (max-width: 928px) {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-inline: 10px;
+  }
+}
+
 .options-content {
   flex-basis: 80%;
   p {
