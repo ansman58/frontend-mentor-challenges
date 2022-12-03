@@ -5,7 +5,7 @@ import Lizard from "../../assets/icon-lizard.svg";
 import Spock from "../../assets/icon-spock.svg";
 import Paper from "../../assets/icon-paper.svg";
 import Rock from "../../assets/icon-rock.svg";
-import Options from "../Options";
+import Options from "../../Components/Options";
 import clsx from "clsx";
 
 const Ready = () => {

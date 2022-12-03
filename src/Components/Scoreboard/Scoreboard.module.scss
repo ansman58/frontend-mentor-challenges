@@ -1,0 +1,38 @@
+.wrapper {
+  width: 50%;
+  margin: auto;
+  border: 5px solid hsl(217, 16%, 45%);
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.options-content {
+  p {
+    color: white;
+    font-size: 1.125rem;
+  }
+}
+
+.score {
+  background-color: white;
+  width: 20%;
+  border-radius: 10px;
+  display: grid;
+}
+
+.flexed {
+  margin-inline: auto;
+  padding-block: 15px;
+}
+
+.score {
+  color: hsl(229, 64%, 46%);
+}
+
+.value{
+    color: hsl(229, 25%, 31%);
+    font-weight: 700;
+    font-size: 3rem;
+}
