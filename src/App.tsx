@@ -5,7 +5,7 @@ import React from "react";
 import Active from "./Screens/Active";
 
 function App() {
-  const [isActive, setIsActive] = React.useState(true);
+  const [isActive, setIsActive] = React.useState(false);
   return (
     <div className={style.app}>
       <Scoreboard isActiveBoard={isActive ? true : false} />
