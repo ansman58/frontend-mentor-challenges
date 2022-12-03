@@ -9,11 +9,15 @@ import React from "react";
 import { PlayerChoiceContext } from "../../Store/contexts";
 
 const Active = () => {
-  const [houseChoiceLoaded, setHouseChiceLoaded] = React.useState(false);
+  const [houseChoiceLoaded, setHouseChoiceLoaded] = React.useState(false);
+  const [houseChoice, setHouseChoice] = React.useState("");
+  const [houseIcon, setHouseIcon] = React.useState<any>(null);
+  const [countdown, setCountdown] = React.useState(4);
 
-  const { choosenOption, picked } = React.useContext(PlayerChoiceContext);
+  const { choosenOption, setChoosenOption, picked } =
+    React.useContext(PlayerChoiceContext);
 
-  const handleIcon = () => {
+  const handlePlayChosenIcon = () => {
     switch (choosenOption) {
       case "scissors":
         return ScissorsIcon;
@@ -30,6 +34,47 @@ const Active = () => {
     }
   };
 
+  const handleHouseChoice = () => {
+    const icons = ["scissors", "paper", "rock", "spock", "lizard"];
+    const randomChoice = Math.floor(Math.random() * icons.length);
+    switch (icons[randomChoice]) {
+      case "scissors":
+        setHouseChoice("scissors");
+        setHouseIcon(ScissorsIcon);
+        break;
+      case "paper":
+        setHouseChoice("paper");
+        setHouseIcon(PaperIcon);
+        break;
+      case "rock":
+        setHouseChoice("rock");
+        setHouseIcon(RockIcon);
+        break;
+      case "spock":
+        setHouseChoice("spock");
+        setHouseIcon(SpockIcon);
+        break;
+      case "lizard":
+        setHouseChoice("lizard");
+        setHouseIcon(LizardIcon);
+        break;
+      default:
+        ScissorsIcon;
+    }
+  };
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    if (countdown === 0) {
+      handleHouseChoice();
+      setHouseChoiceLoaded(true);
+      clearTimeout(timeout);
+    }
+  }, [countdown]);
+
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
@@ -38,7 +83,7 @@ const Active = () => {
 
           <div>
             <Options
-              icon={handleIcon()}
+              icon={handlePlayChosenIcon()}
               isActiveScreen
               playerChoice={choosenOption}
               picked={picked}
@@ -49,9 +94,11 @@ const Active = () => {
           <p className={style.text}>House Picked</p>
           <div>
             {houseChoiceLoaded ? (
-              <Options icon={ScissorsIcon} isActiveScreen />
+              <Options icon={houseIcon} isActiveScreen picked={houseChoice} />
             ) : (
-              <div className={style.empty}></div>
+              <div className={style.empty}>
+                <p className={style.countdown}>{countdown}</p>
+              </div>
             )}
           </div>
         </div>

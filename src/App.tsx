@@ -24,7 +24,7 @@ function App() {
       <div className={style.app}>
         <Scoreboard isActiveBoard={isActive ? true : false} />
         <section className={style.margin}>
-          {isActive ? <Active /> : <Ready setGameOnScreen={setIsActive} />}
+          {isActive ? <Active /> : <Ready />}
         </section>
       </div>
     </PlayerChoiceContext.Provider>

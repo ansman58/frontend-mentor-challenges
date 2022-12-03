@@ -1,20 +1,18 @@
 import PentagonBg from "../../assets/bg-pentagon.svg";
 import style from "./Ready.module.scss";
 import Scissors from "../../assets/icon-scissors.svg";
-import Lizard from "../../assets/icon-lizard.svg";
-import Spock from "../../assets/icon-spock.svg";
-import Paper from "../../assets/icon-paper.svg";
-import Rock from "../../assets/icon-rock.svg";
+import LizardIcon from "../../assets/icon-lizard.svg";
+import SpockIcon from "../../assets/icon-spock.svg";
+import PaperIcon from "../../assets/icon-paper.svg";
+import RockIcon from "../../assets/icon-rock.svg";
 import Options from "../../Components/Options";
 import clsx from "clsx";
 import React from "react";
 import { PlayerChoiceContext } from "../../Store/contexts";
 
-interface ReadyProps {
-  setGameOnScreen?: React.Dispatch<React.SetStateAction<boolean>>;
-}
+interface ReadyProps {}
 
-const Ready: React.FC<ReadyProps> = ({ setGameOnScreen }) => {
+const Ready: React.FC<ReadyProps> = () => {
   const { picked } = React.useContext(PlayerChoiceContext);
   return (
     <div className={style.wrapper}>
@@ -34,25 +32,25 @@ const Ready: React.FC<ReadyProps> = ({ setGameOnScreen }) => {
             picked={"scissors"}
           />
           <Options
-            icon={Paper}
+            icon={PaperIcon}
             className={clsx(style.paper, style.option)}
             picked={"paper"}
             playerChoice="paper"
           />
           <Options
-            icon={Rock}
+            icon={RockIcon}
             className={clsx(style.rock, style.option)}
             picked={"rock"}
             playerChoice="rock"
           />
           <Options
-            icon={Lizard}
+            icon={LizardIcon}
             className={clsx(style.lizard, style.option)}
             picked={"lizard"}
             playerChoice="lizard"
           />
           <Options
-            icon={Spock}
+            icon={SpockIcon}
             className={clsx(style.spock, style.option)}
             picked={"spock"}
             playerChoice="spock"
