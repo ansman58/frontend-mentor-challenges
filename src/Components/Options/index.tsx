@@ -1,6 +1,7 @@
-import Lizard from "../../assets/icon-lizard.svg";
 import style from "./Options.module.scss";
 import clsx from "clsx";
+import React from "react";
+import { PlayerChoiceContext } from "../../Store/contexts";
 
 interface IOptions {
   className?: string;
@@ -11,6 +12,7 @@ interface IOptions {
   isSpock?: boolean;
   isLizard?: boolean;
   isActive?: boolean;
+  playerChoice?: string;
 }
 
 const Options: React.FC<IOptions> = ({
@@ -22,7 +24,34 @@ const Options: React.FC<IOptions> = ({
   isSpock,
   isLizard,
   isActive,
+  playerChoice,
 }) => {
+  const ref = React.useRef<any>();
+  const { isActiveScreen, setIsActiveScreen, choice } =
+    React.useContext(PlayerChoiceContext);
+
+  const handlePlayerChoice = () => {
+    const choice = isScissors || isPaper || isRock || isSpock || isLizard;
+
+    switch (choice) {
+      case isScissors:
+        alert(ref?.current?.dataset?.choice);
+        break;
+      case isPaper:
+        alert("paper");
+        break;
+      case isRock:
+        alert("rock");
+        break;
+      case isSpock:
+        alert("spock");
+        break;
+      case isLizard:
+        alert("lizard");
+        break;
+    }
+  };
+
   return (
     <div className={style.wrapper}>
       <div
@@ -38,6 +67,9 @@ const Options: React.FC<IOptions> = ({
           },
           className
         )}
+        ref={ref}
+        data-choice={playerChoice}
+        onClick={handlePlayerChoice}
       >
         <img src={icon} alt="" className={clsx(style.img)} />
       </div>

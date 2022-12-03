@@ -8,7 +8,11 @@ import Rock from "../../assets/icon-rock.svg";
 import Options from "../../Components/Options";
 import clsx from "clsx";
 
-const Ready = () => {
+interface ReadyProps {
+  handlePlayerChoice?: (choice: string) => void;
+}
+
+const Ready: React.FC<ReadyProps> = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
@@ -24,26 +28,31 @@ const Ready = () => {
             icon={Scissors}
             className={clsx(style.scissors, style.option)}
             isScissors
+            playerChoice="scissors"
           />
           <Options
             icon={Paper}
             className={clsx(style.paper, style.option)}
             isPaper
+            playerChoice="paper"
           />
           <Options
             icon={Rock}
             className={clsx(style.rock, style.option)}
             isRock
+            playerChoice="rock"
           />
           <Options
             icon={Lizard}
             className={clsx(style.lizard, style.option)}
             isLizard
+            playerChoice="lizard"
           />
           <Options
             icon={Spock}
             className={clsx(style.spock, style.option)}
             isSpock
+            playerChoice="spock"
           />
         </div>
       </div>
