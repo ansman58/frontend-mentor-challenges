@@ -7,12 +7,15 @@ import Paper from "../../assets/icon-paper.svg";
 import Rock from "../../assets/icon-rock.svg";
 import Options from "../../Components/Options";
 import clsx from "clsx";
+import React from "react";
+import { PlayerChoiceContext } from "../../Store/contexts";
 
 interface ReadyProps {
-  handlePlayerChoice?: (choice: string) => void;
+  setGameOnScreen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Ready: React.FC<ReadyProps> = () => {
+const Ready: React.FC<ReadyProps> = ({ setGameOnScreen }) => {
+  const { picked } = React.useContext(PlayerChoiceContext);
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
@@ -27,31 +30,31 @@ const Ready: React.FC<ReadyProps> = () => {
           <Options
             icon={Scissors}
             className={clsx(style.scissors, style.option)}
-            isScissors
             playerChoice="scissors"
+            picked={"scissors"}
           />
           <Options
             icon={Paper}
             className={clsx(style.paper, style.option)}
-            isPaper
+            picked={"paper"}
             playerChoice="paper"
           />
           <Options
             icon={Rock}
             className={clsx(style.rock, style.option)}
-            isRock
+            picked={"rock"}
             playerChoice="rock"
           />
           <Options
             icon={Lizard}
             className={clsx(style.lizard, style.option)}
-            isLizard
+            picked={"lizard"}
             playerChoice="lizard"
           />
           <Options
             icon={Spock}
             className={clsx(style.spock, style.option)}
-            isSpock
+            picked={"spock"}
             playerChoice="spock"
           />
         </div>

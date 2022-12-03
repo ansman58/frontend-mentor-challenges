@@ -6,50 +6,49 @@ import { PlayerChoiceContext } from "../../Store/contexts";
 interface IOptions {
   className?: string;
   icon: any;
-  isScissors?: boolean;
-  isPaper?: boolean;
-  isRock?: boolean;
-  isSpock?: boolean;
-  isLizard?: boolean;
-  isActive?: boolean;
+  isActiveScreen?: boolean;
   playerChoice?: string;
+  picked?: string;
 }
 
 const Options: React.FC<IOptions> = ({
   className,
   icon,
-  isScissors,
-  isPaper,
-  isRock,
-  isSpock,
-  isLizard,
-  isActive,
+  isActiveScreen,
   playerChoice,
+  picked,
 }) => {
   const ref = React.useRef<any>();
-  const { isActiveScreen, setIsActiveScreen, choice } =
+  const { setIsActive, setChoosenOption, setPicked } =
     React.useContext(PlayerChoiceContext);
 
   const handlePlayerChoice = () => {
-    const choice = isScissors || isPaper || isRock || isSpock || isLizard;
+    const gameOption = ref.current?.dataset?.choice;
 
-    switch (choice) {
-      case isScissors:
-        alert(ref?.current?.dataset?.choice);
+    switch (gameOption) {
+      case "scissors":
+        setChoosenOption("scissors");
+        setPicked("scissors");
         break;
-      case isPaper:
-        alert("paper");
+      case "paper":
+        setChoosenOption("paper");
+        setPicked("paper");
         break;
-      case isRock:
-        alert("rock");
+      case "rock":
+        setChoosenOption("rock");
+        setPicked("rock");
         break;
-      case isSpock:
-        alert("spock");
+      case "spock":
+        setChoosenOption("spock");
+        setPicked("spock");
         break;
-      case isLizard:
-        alert("lizard");
+      case "lizard":
+        setChoosenOption("lizard");
+        setPicked("lizard");
         break;
     }
+
+    setIsActive?.(true);
   };
 
   return (
@@ -58,12 +57,12 @@ const Options: React.FC<IOptions> = ({
         className={clsx(
           style.container,
           {
-            [style.rock]: isRock,
-            [style.paper]: isPaper,
-            [style.scissors]: isScissors,
-            [style.spock]: isSpock,
-            [style.lizard]: isLizard,
-            [style.active]: isActive,
+            [style.rock]: picked === "rock",
+            [style.paper]: picked === "paper",
+            [style.scissors]: picked === "scissors",
+            [style.spock]: picked === "spock",
+            [style.lizard]: picked === "lizard",
+            [style.active]: isActiveScreen,
           },
           className
         )}
