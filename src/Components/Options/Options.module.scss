@@ -1,0 +1,52 @@
+@mixin options-border($color) {
+  border: 20px solid $color;
+
+  @media (max-width: 768px){
+    border: 13px solid $color;
+  }
+}
+
+.container {
+  border: 20px solid hsl(230, 89%, 62%);
+  border-radius: 50%;
+  height: 125px;
+  width: 125px;
+  background-color: white;
+  display: grid;
+  box-shadow: inset 0px 5px 2px hsl(0, 10%, 95%);
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
+
+
+}
+
+.rock {
+  @include options-border(hsl(349, 71%, 52%));
+}
+.paper {
+  @include options-border(hsl(230, 89%, 62%));
+}
+
+.scissors {
+  @include options-border(hsl(39, 89%, 49%));
+}
+
+.spock {
+  @include options-border(hsl(189, 59%, 53%));
+}
+
+.lizard {
+  @include options-border(hsl(261, 73%, 60%));
+}
+
+.img {
+  margin: auto;
+
+  @media (max-width: 768px) {
+    max-width: 50%;
+  }
+}

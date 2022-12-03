@@ -1,4 +1,56 @@
-.container{
-    background-image: url('../../assets/bg-pentagon.svg');
-    background-color: red;
+.wrapper {
+  display: grid;
+  min-height: 100vh;
+  background-color: hsl(214, 47%, 23%);
+  overflow-y: auto;
+}
+
+.container {
+  margin: auto;
+}
+
+.content {
+  position: relative;
+}
+
+.img-container {
+  background-color: red;
+  display: grid;
+}
+
+.bg-image {
+  margin: auto;
+  @media (max-width: 768px) {
+    width: 230px;
+    height: max-content;
+    object-fit: contain;
+  }
+}
+
+.option {
+  position: absolute;
+}
+
+.scissors {
+  top: -40px;
+  right: 100px;
+}
+
+.paper {
+  right: -50px;
+  top: 55px;
+}
+
+.spock {
+  top: 55px;
+  left: -50px;
+}
+
+.lizard {
+  bottom: -60px;
+}
+
+.rock {
+  right: 0px;
+  bottom: -60px;
 }
