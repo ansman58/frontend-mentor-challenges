@@ -3,18 +3,16 @@ import clsx from "clsx";
 import React from "react";
 import { PlayerChoiceContext } from "../../Store/contexts";
 
-interface IOptions {
+interface OptionsProps {
   className?: string;
   icon: any;
-  isActiveScreen?: boolean;
   playerChoice?: string;
   picked?: string;
 }
 
-const Options: React.FC<IOptions> = ({
+const Options: React.FC<OptionsProps> = ({
   className,
   icon,
-  isActiveScreen,
   playerChoice,
   picked,
 }) => {
