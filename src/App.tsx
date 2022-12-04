@@ -9,7 +9,7 @@ import Rules from "./Components/Rules";
 function App() {
   const [isActive, setIsActive] = React.useState(false);
   const [choosenOption, setChoosenOption] = React.useState("scissors");
-  const [picked, setPicked] = React.useState(null);
+  const [picked, setPicked] = React.useState('');
   const [score, setScore] = React.useState(0);
   const [showRules, setShowRules] = React.useState(false);
 
