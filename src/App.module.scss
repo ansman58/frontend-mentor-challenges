@@ -14,7 +14,8 @@
 .footer {
   display: flex;
   justify-content: flex-end;
-  height: 50px;
+  align-items: center;
+  max-height: 50px;
 
   p {
     border: 1px solid whitesmoke;
@@ -29,8 +30,5 @@
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    p {
-      margin-block: auto;
-    }
   }
 }

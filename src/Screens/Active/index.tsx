@@ -82,13 +82,13 @@ const Active = () => {
       (choosenOption === "lizard" && houseChoice === "paper") ||
       (choosenOption === "spock" && houseChoice === "rock")
     ) {
-      setResult("YOU WIN");
+      setResult("YOU WON 🥳");
       setScore((prev: number) => prev + 1);
     } else if (choosenOption === houseChoice) {
-      setResult("DRAW");
+      setResult("DRAW 😑");
       setScore(score);
     } else {
-      setResult("YOU LOSE");
+      setResult("YOU LOST 😥");
       if (!score) return;
       setScore((prev: number) => prev - 1);
     }

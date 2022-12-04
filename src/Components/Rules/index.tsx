@@ -1,5 +1,5 @@
 import React from "react";
-import RulesIcon from "../../assets/image-rules.svg";
+import RulesIcon from "../../assets/image-rules-bonus.svg";
 import CloseIcon from "../../assets/icon-close.svg";
 import style from "./Rules.module.scss";
 
