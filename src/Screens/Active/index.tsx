@@ -114,11 +114,10 @@ const Active = () => {
     <div className={style.wrapper}>
       <div className={style.content}>
         <div className={style.left}>
-          <p className={style.text}>You Picked</p>
+          <p className={style.text}>YOU PICKED</p>
           <div className={style.option}>
             <Options
               icon={handlePlayChosenIcon()}
-              // isActiveScreen
               playerChoice={choosenOption}
               picked={picked}
             />
@@ -135,7 +134,7 @@ const Active = () => {
           </div>
         )}
         <div className={style.right}>
-          <p className={style.text}>House Picked</p>
+          <p className={style.text}>THE HOUSE PICKED</p>
           <div className={style.option}>
             {houseChoiceLoaded ? (
               <Options icon={houseIcon} picked={houseChoice} />

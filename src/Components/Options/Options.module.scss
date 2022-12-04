@@ -41,22 +41,7 @@
   @include options-border(hsl(261, 73%, 60%));
 }
 
-.active {
-  width: 300px;
-  height: 300px;
-  border-width: 40px;
-
-  @media (max-width: 768px) {
-    width: 150px;
-    height: 150px;
-    border-width: 15px;
-  }
-}
-
 .img {
   margin: auto;
-
-  @media (max-width: 768px) {
-    max-width: 50%;
-  }
+  max-width: 50%;
 }

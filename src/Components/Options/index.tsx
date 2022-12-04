@@ -62,7 +62,6 @@ const Options: React.FC<IOptions> = ({
             [style.scissors]: picked === "scissors",
             [style.spock]: picked === "spock",
             [style.lizard]: picked === "lizard",
-            [style.active]: isActiveScreen,
           },
           className
         )}

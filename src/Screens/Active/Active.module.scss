@@ -1,5 +1,4 @@
 .wrapper {
-  max-width: 1366px;
   @media (max-width: 768px) {
     display: unset;
     width: 100%;
@@ -8,21 +7,15 @@
 }
 
 .content {
+  margin-inline: auto;
   display: flex;
   justify-content: center;
-  // gap: 2rem;
+  gap: 2rem;
+}
 
-  // @media (max-width: 1300px) {
-  //   width: 70%;
-  // }
-
-  // @media (max-width: 928px) {
-  //   width: 80%;
-  // }
-
-  // @media (max-width: 768px) {
-  //   width: 100%;
-  // }
+.middle {
+  align-self: flex-end;
+  display: grid;
 }
 
 .desktop-middle {
@@ -41,11 +34,6 @@
       width: 100%;
     }
   }
-}
-.middle {
-  display: grid;
-  // grid-area: middle;
-  flex-basis: 30%;
 }
 
 .margin {
@@ -79,7 +67,7 @@
 .text {
   margin-bottom: 40px;
   color: white;
-  font-size: 30px;
+  font-size: 18px;
   text-align: center;
 
   @media (max-width: 768px) {
@@ -89,15 +77,10 @@
 
 .empty {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   background-color: hsl(229, 25%, 31%);
   display: grid;
-
-  @media (max-width: 768px) {
-    width: 100px;
-    height: 100px;
-  }
 }
 
 .countdown {
@@ -112,7 +95,6 @@
 
 .right,
 .left {
-  flex-basis: 30%;
   display: grid;
 }
 
