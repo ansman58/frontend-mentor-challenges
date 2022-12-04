@@ -6,9 +6,10 @@ import Active from "./Screens/Active";
 import { PlayerChoiceContext } from "./Store/contexts";
 
 function App() {
-  const [isActive, setIsActive] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(true);
   const [choosenOption, setChoosenOption] = React.useState("scissors");
   const [picked, setPicked] = React.useState(null);
+  const [score, setScore] = React.useState(0);
 
   return (
     <PlayerChoiceContext.Provider
@@ -19,6 +20,8 @@ function App() {
         setChoosenOption,
         picked,
         setPicked,
+        score,
+        setScore,
       }}
     >
       <div className={style.app}>

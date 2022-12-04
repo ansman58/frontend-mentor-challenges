@@ -13,9 +13,10 @@ const Active = () => {
   const [houseChoice, setHouseChoice] = React.useState("");
   const [houseIcon, setHouseIcon] = React.useState<any>(null);
   const [countdown, setCountdown] = React.useState(4);
+  const [replay, setReplay] = React.useState("");
+  const [result, setResult] = React.useState("");
 
-  const { choosenOption, setChoosenOption, picked } =
-    React.useContext(PlayerChoiceContext);
+  const { choosenOption, picked } = React.useContext(PlayerChoiceContext);
 
   const handlePlayChosenIcon = () => {
     switch (choosenOption) {
@@ -63,6 +64,27 @@ const Active = () => {
     }
   };
 
+  const handleResult = () => {
+    if (
+      (choosenOption === "scissors" && houseChoice === "paper") ||
+      (choosenOption === "paper" && houseChoice === "rock") ||
+      (choosenOption === "rock" && houseChoice === "lizard") ||
+      (choosenOption === "lizard" && houseChoice === "spock") ||
+      (choosenOption === "spock" && houseChoice === "scissors") ||
+      (choosenOption === "scissors" && houseChoice === "lizard") ||
+      (choosenOption === "paper" && houseChoice === "spock") ||
+      (choosenOption === "rock" && houseChoice === "scissors") ||
+      (choosenOption === "lizard" && houseChoice === "paper") ||
+      (choosenOption === "spock" && houseChoice === "rock")
+    ) {
+      setResult("YOU WIN");
+    } else if (choosenOption === houseChoice) {
+      setResult("DRAW");
+    } else {
+      setResult("YOU LOSE");
+    }
+  };
+
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setCountdown((prev) => prev - 1);
@@ -71,6 +93,7 @@ const Active = () => {
     if (countdown === 0) {
       handleHouseChoice();
       setHouseChoiceLoaded(true);
+      handleResult();
       clearTimeout(timeout);
     }
   }, [countdown]);
@@ -90,6 +113,16 @@ const Active = () => {
             />
           </div>
         </div>
+        {result && (
+          <div className={style.middle}>
+            <div className={style.margin}>
+              <p>{result}</p>
+              <div className={style.replay}>
+                <p>PLAY AGAIN</p>
+              </div>
+            </div>
+          </div>
+        )}
         <div className={style.right}>
           <p className={style.text}>House Picked</p>
           <div>
