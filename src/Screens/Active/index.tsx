@@ -63,46 +63,34 @@ const Active = () => {
       default:
         ScissorsIcon;
     }
+
+    handleResult();
   }, [houseChoice]);
 
   const handleResult = () => {
-    if (choosenOption === houseChoice) {
+    if (!houseChoice) return;
+
+    if (
+      (choosenOption === "scissors" && houseChoice === "paper") ||
+      (choosenOption === "paper" && houseChoice === "rock") ||
+      (choosenOption === "rock" && houseChoice === "lizard") ||
+      (choosenOption === "lizard" && houseChoice === "spock") ||
+      (choosenOption === "spock" && houseChoice === "scissors") ||
+      (choosenOption === "scissors" && houseChoice === "lizard") ||
+      (choosenOption === "paper" && houseChoice === "spock") ||
+      (choosenOption === "rock" && houseChoice === "scissors") ||
+      (choosenOption === "lizard" && houseChoice === "paper") ||
+      (choosenOption === "spock" && houseChoice === "rock")
+    ) {
+      setResult("YOU WIN");
+      setScore((prev: number) => prev + 1);
+    } else if (choosenOption === houseChoice) {
       setResult("DRAW");
       setScore(score);
-      return;
-    } else if (choosenOption === "scissors" && houseChoice === "paper") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "paper" && houseChoice === "rock") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "rock" && houseChoice === "lizard") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "lizard" && houseChoice === "spock") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "spock" && houseChoice === "scissors") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "scissors" && houseChoice === "lizard") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "paper" && houseChoice === "spock") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "rock" && houseChoice === "scissors") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "lizard" && houseChoice === "paper") {
-      setResult("YOU WIN");
-      setScore(score + 1);
-    } else if (choosenOption === "spock" && houseChoice === "rock") {
-      setResult("YOU WIN");
-      setScore(score + 1);
     } else {
       setResult("YOU LOSE");
-      setScore(score - 1);
+      if (!score) return;
+      setScore((prev: number) => prev - 1);
     }
   };
 
@@ -114,15 +102,13 @@ const Active = () => {
     if (countdown < 1) {
       clearTimeout(timeout);
       setHouseChoiceLoaded(true);
+      handleHouseChoice();
     }
   }, [countdown]);
 
   React.useEffect(() => {
-    if (houseChoiceLoaded) {
-      handleHouseChoice();
-      handleResult();
-    }
-  }, [houseChoiceLoaded]);
+    handleResult();
+  }, [houseChoice]);
 
   return (
     <div className={style.wrapper}>
@@ -132,7 +118,7 @@ const Active = () => {
           <div className={style.option}>
             <Options
               icon={handlePlayChosenIcon()}
-              isActiveScreen
+              // isActiveScreen
               playerChoice={choosenOption}
               picked={picked}
             />
@@ -152,7 +138,7 @@ const Active = () => {
           <p className={style.text}>House Picked</p>
           <div className={style.option}>
             {houseChoiceLoaded ? (
-              <Options icon={houseIcon} isActiveScreen picked={houseChoice} />
+              <Options icon={houseIcon} picked={houseChoice} />
             ) : (
               <div className={style.empty}>
                 <p className={style.countdown}>{countdown}</p>
