@@ -12,7 +12,7 @@ const Active = () => {
   const [houseChoiceLoaded, setHouseChoiceLoaded] = React.useState(false);
   const [houseChoice, setHouseChoice] = React.useState("");
   const [houseIcon, setHouseIcon] = React.useState<any>(null);
-  const [countdown, setCountdown] = React.useState(5);
+  const [countdown, setCountdown] = React.useState(3);
   const [result, setResult] = React.useState("");
 
   const { choosenOption, picked, setIsActive, setScore, score } =
@@ -64,59 +64,60 @@ const Active = () => {
     }
   }, [houseChoice]);
 
-  const handleResult = React.useCallback(() => {
+  const handleResult = () => {
     if (choosenOption === houseChoice) {
       setResult("DRAW");
-      setScore((prev: number) => prev);
+      setScore(score);
+      return;
     } else if (choosenOption === "scissors" && houseChoice === "paper") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "paper" && houseChoice === "rock") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "rock" && houseChoice === "lizard") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "lizard" && houseChoice === "spock") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "spock" && houseChoice === "scissors") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "scissors" && houseChoice === "lizard") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "paper" && houseChoice === "spock") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "rock" && houseChoice === "scissors") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "lizard" && houseChoice === "paper") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else if (choosenOption === "spock" && houseChoice === "rock") {
       setResult("YOU WIN");
-      setScore((prev: number) => prev + 1);
+      setScore(score + 1);
     } else {
       setResult("YOU LOSE");
-      setScore((prev: number) => prev - 1);
+      setScore(score - 1);
     }
-  }, [score]);
+  };
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setCountdown((prev) => prev - 1);
     }, 1000);
 
-    if (countdown === 0) {
-      handleHouseChoice();
-      setHouseChoiceLoaded(true);
-      handleResult();
+    if (countdown < 1) {
       clearTimeout(timeout);
+      handleHouseChoice();
+      handleResult();
+      setHouseChoiceLoaded(true);
     }
-  }, [countdown, houseChoice, result]);
-
+  }, [countdown, houseChoiceLoaded]);
+  console.log({ houseChoiceLoaded, choosenOption, houseChoice, countdown });
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
