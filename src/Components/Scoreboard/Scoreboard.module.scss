@@ -29,7 +29,8 @@
   background-color: white;
   flex-basis: 20%;
   border-radius: 10px;
-  display: grid;
+  display: flex;
+  justify-content: center;
 
   @media (max-width: 768px) {
     flex-basis: 40%;
@@ -37,7 +38,6 @@
 }
 
 .flexed {
-  margin-inline: auto;
   padding-block: 15px;
 }
 

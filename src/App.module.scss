@@ -14,12 +14,14 @@
 .footer {
   display: flex;
   justify-content: flex-end;
+  height: 50px;
+
   p {
     border: 1px solid whitesmoke;
     color: whitesmoke;
     font-weight: 600;
     border-radius: 10px;
-    padding: 0.625rem 30px;
+    padding: 10px 50px;
     cursor: pointer;
   }
 
@@ -27,8 +29,6 @@
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 50px;
-
     p {
       margin-block: auto;
     }

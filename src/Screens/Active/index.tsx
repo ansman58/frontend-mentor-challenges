@@ -144,7 +144,6 @@ const Active = () => {
               </div>
             )}
           </div>
-          {/* <p className={clsx(style.text, style['mobile-text'])}>THE HOUSE PICKED</p> */}
         </div>
       </div>
       {/* displays only on mobile */}
