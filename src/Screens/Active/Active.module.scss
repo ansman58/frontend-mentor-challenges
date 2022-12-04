@@ -47,6 +47,11 @@
   background-color: white;
   padding: 20px;
   border-radius: 10px;
+  cursor: pointer;
+
+  & > p {
+    color: hsl(229, 25%, 31%);
+  }
 }
 
 .text {

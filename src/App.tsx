@@ -6,7 +6,7 @@ import Active from "./Screens/Active";
 import { PlayerChoiceContext } from "./Store/contexts";
 
 function App() {
-  const [isActive, setIsActive] = React.useState(true);
+  const [isActive, setIsActive] = React.useState(false);
   const [choosenOption, setChoosenOption] = React.useState("scissors");
   const [picked, setPicked] = React.useState(null);
   const [score, setScore] = React.useState(0);

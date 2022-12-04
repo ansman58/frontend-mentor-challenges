@@ -16,7 +16,8 @@ const Active = () => {
   const [replay, setReplay] = React.useState("");
   const [result, setResult] = React.useState("");
 
-  const { choosenOption, picked } = React.useContext(PlayerChoiceContext);
+  const { choosenOption, picked, setIsActive } =
+    React.useContext(PlayerChoiceContext);
 
   const handlePlayChosenIcon = () => {
     switch (choosenOption) {
@@ -65,21 +66,28 @@ const Active = () => {
   };
 
   const handleResult = () => {
-    if (
-      (choosenOption === "scissors" && houseChoice === "paper") ||
-      (choosenOption === "paper" && houseChoice === "rock") ||
-      (choosenOption === "rock" && houseChoice === "lizard") ||
-      (choosenOption === "lizard" && houseChoice === "spock") ||
-      (choosenOption === "spock" && houseChoice === "scissors") ||
-      (choosenOption === "scissors" && houseChoice === "lizard") ||
-      (choosenOption === "paper" && houseChoice === "spock") ||
-      (choosenOption === "rock" && houseChoice === "scissors") ||
-      (choosenOption === "lizard" && houseChoice === "paper") ||
-      (choosenOption === "spock" && houseChoice === "rock")
-    ) {
-      setResult("YOU WIN");
-    } else if (choosenOption === houseChoice) {
+    if (choosenOption === houseChoice) {
       setResult("DRAW");
+    } else if (choosenOption === "scissors" && houseChoice === "paper") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "paper" && houseChoice === "rock") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "rock" && houseChoice === "lizard") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "lizard" && houseChoice === "spock") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "spock" && houseChoice === "scissors") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "scissors" && houseChoice === "lizard") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "paper" && houseChoice === "spock") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "rock" && houseChoice === "scissors") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "lizard" && houseChoice === "paper") {
+      setResult("YOU WIN");
+    } else if (choosenOption === "spock" && houseChoice === "rock") {
+      setResult("YOU WIN");
     } else {
       setResult("YOU LOSE");
     }
@@ -92,11 +100,11 @@ const Active = () => {
 
     if (countdown === 0) {
       handleHouseChoice();
-      setHouseChoiceLoaded(true);
       handleResult();
+      setHouseChoiceLoaded(true);
       clearTimeout(timeout);
     }
-  }, [countdown]);
+  }, [countdown, result, houseChoice]);
 
   return (
     <div className={style.wrapper}>
@@ -117,7 +125,7 @@ const Active = () => {
           <div className={style.middle}>
             <div className={style.margin}>
               <p>{result}</p>
-              <div className={style.replay}>
+              <div className={style.replay} onClick={() => setIsActive(false)}>
                 <p>PLAY AGAIN</p>
               </div>
             </div>
