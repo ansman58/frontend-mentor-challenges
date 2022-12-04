@@ -10,12 +10,8 @@
   margin-inline: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
-}
-
-.middle {
-  align-self: flex-end;
-  display: grid;
 }
 
 .desktop-middle {
@@ -27,7 +23,8 @@
 .mobile-middle {
   visibility: hidden;
   width: 100%;
-  display: grid;
+  display: flex;
+  justify-content: center;
   @media (max-width: 600px) {
     visibility: visible;
     & > p {
@@ -37,7 +34,6 @@
 }
 
 .margin {
-  margin: auto;
   text-align: center;
 
   @media (max-width: 600px) {
@@ -67,11 +63,11 @@
 .text {
   margin-bottom: 40px;
   color: white;
-  font-size: 18px;
+  font-size: 1.125rem;
   text-align: center;
 
-  @media (max-width: 768px) {
-    font-size: 1.125rem;
+  @media (max-width: 600px) {
+    font-size: 1rem;
   }
 }
 
@@ -95,7 +91,12 @@
 
 .right,
 .left {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 600px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .empty {
