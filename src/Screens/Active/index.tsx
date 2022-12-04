@@ -7,6 +7,7 @@ import PaperIcon from "../../assets/icon-paper.svg";
 import RockIcon from "../../assets/icon-rock.svg";
 import React from "react";
 import { PlayerChoiceContext } from "../../Store/contexts";
+import clsx from "clsx";
 
 const Active = () => {
   const [houseChoiceLoaded, setHouseChoiceLoaded] = React.useState(false);
@@ -112,19 +113,23 @@ const Active = () => {
 
     if (countdown < 1) {
       clearTimeout(timeout);
-      handleHouseChoice();
-      handleResult();
       setHouseChoiceLoaded(true);
     }
-  }, [countdown, houseChoiceLoaded]);
-  console.log({ houseChoiceLoaded, choosenOption, houseChoice, countdown });
+  }, [countdown]);
+
+  React.useEffect(() => {
+    if (houseChoiceLoaded) {
+      handleHouseChoice();
+      handleResult();
+    }
+  }, [houseChoiceLoaded]);
+
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
         <div className={style.left}>
           <p className={style.text}>You Picked</p>
-
-          <div>
+          <div className={style.option}>
             <Options
               icon={handlePlayChosenIcon()}
               isActiveScreen
@@ -134,7 +139,7 @@ const Active = () => {
           </div>
         </div>
         {result && (
-          <div className={style.middle}>
+          <div className={clsx(style.middle, style["desktop-middle"])}>
             <div className={style.margin}>
               <p>{result}</p>
               <div className={style.replay} onClick={() => setIsActive(false)}>
@@ -145,7 +150,7 @@ const Active = () => {
         )}
         <div className={style.right}>
           <p className={style.text}>House Picked</p>
-          <div>
+          <div className={style.option}>
             {houseChoiceLoaded ? (
               <Options icon={houseIcon} isActiveScreen picked={houseChoice} />
             ) : (
@@ -156,6 +161,17 @@ const Active = () => {
           </div>
         </div>
       </div>
+      {/* displays only on mobile */}
+      {result && (
+        <div className={clsx(style.middle, style["mobile-middle"])}>
+          <div className={style.margin}>
+            <p>{result}</p>
+            <div className={style.replay} onClick={() => setIsActive(false)}>
+              <p>PLAY AGAIN</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
