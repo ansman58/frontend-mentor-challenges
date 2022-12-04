@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import React from "react";
+import { PlayerChoiceContext } from "../../Store/contexts";
 import style from "./Scoreboard.module.scss";
 
 interface ScoreboardProps {
@@ -6,6 +8,7 @@ interface ScoreboardProps {
 }
 
 const Scoreboard: React.FC<ScoreboardProps> = ({ isActiveBoard }) => {
+  const { score } = React.useContext(PlayerChoiceContext);
   return (
     <div
       className={clsx(style.wrapper, {
@@ -24,7 +27,7 @@ const Scoreboard: React.FC<ScoreboardProps> = ({ isActiveBoard }) => {
       <div className={style.score}>
         <div className={style.flexed}>
           <p className={style.score}>SCORE</p>
-          <p className={style.value}>12</p>
+          <p className={style.value}>{score}</p>
         </div>
       </div>
     </div>
