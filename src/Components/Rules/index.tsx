@@ -20,8 +20,15 @@ const Rules: React.FC<RulesProps> = ({ setShowRules }) => {
             onClick={() => setShowRules(false)}
           />
         </div>
-        <div>
+        <div className={style["img-container"]}>
           <img src={RulesIcon} alt="rules" />
+        </div>
+        <div className={style["mobile-close"]}>
+          <img
+            src={CloseIcon}
+            alt="close icon"
+            onClick={() => setShowRules(false)}
+          />
         </div>
       </div>
     </div>

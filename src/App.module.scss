@@ -3,6 +3,7 @@
   background-color: hsl(214, 47%, 23%);
   overflow-y: auto;
   min-height: 100vh;
+  display: grid;
 }
 .margin {
   margin-top: 5rem;
@@ -18,5 +19,16 @@
     border-radius: 10px;
     padding: 0.625rem 30px;
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+
+    p {
+      margin-block: auto;
+    }
   }
 }

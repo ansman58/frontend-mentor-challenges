@@ -16,6 +16,13 @@
   opacity: 1;
   padding: 40px;
   border-radius: 0.625rem;
+  display: grid;
+
+  @media (max-width: 600px) {
+    height: 100vh;
+    width: 100vw;
+    border-radius: unset;
+  }
 }
 
 .flex {
@@ -27,8 +34,40 @@
   h2 {
     color: hsl(229, 25%, 31%);
   }
+
+  @media (max-width: 600px) {
+    height: 100%;
+    justify-content: center;
+    .close {
+      display: none;
+    }
+  }
 }
 
 .close {
   cursor: pointer;
+}
+
+.img-container {
+  display: grid;
+
+  img {
+    margin-inline: auto;
+    max-width: 100%;
+  }
+}
+
+.mobile-close {
+  display: none;
+  margin-bottom: 10px;
+  height: 20px;
+
+  img {
+    max-width: 50%;
+    height: auto;
+  }
+  @media (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
 }
